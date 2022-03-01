@@ -139,12 +139,12 @@ c seconds                       0.206000000000000000
 ### Solving WPMC given CNF file and graded join tree from JT file
 #### Command
 ```bash
-./dmc --cf=../examples/phi_mc21.cnf --wc=1 --pc=1 <../examples/phi.jt
+./dmc --cf=../examples/phi.cnf --wc=1 --pc=1 <../examples/phi.jt
 ```
 #### Output
 ```
 c processing command-line options...
-c cnfFile                       ../examples/phi_mc21.cnf
+c cnfFile                       ../examples/phi.cnf
 c weightedCounting              1
 c projectedCounting             1
 c existRandom                   0

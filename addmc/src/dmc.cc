@@ -960,12 +960,12 @@ Number Executor::getAdjustedSolution(const Number &apparentSolution) {
 
   for (Int var = 1; var <= JoinNode::cnf.declaredVarCount; var++) { // processes inner vars
     if (!JoinNode::cnf.outerVars.contains(var)) {
-      n = adjustSolutionToHiddenVar(apparentSolution, var, existRandom);
+      n = adjustSolutionToHiddenVar(n, var, existRandom);
     }
   }
 
   for (Int var : JoinNode::cnf.outerVars) {
-    n = adjustSolutionToHiddenVar(apparentSolution, var, !existRandom);
+    n = adjustSolutionToHiddenVar(n, var, !existRandom);
   }
 
   return n;

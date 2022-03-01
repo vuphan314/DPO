@@ -1,7 +1,7 @@
 # DPO (Dynamic-Programming Optimizer)
 DPO runs in two phases:
-- The planning phase constructs a join tree of an XOR-CNF formula
-- The execution phase computes the maximum and a maximizer from the join tree
+- The planning phase constructs a join tree for an XOR-CNF formula.
+- The execution phase computes the maximum and a maximizer from the join tree.
 
 <!-- ####################################################################### -->
 
