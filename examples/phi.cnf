@@ -1,7 +1,7 @@
+c Each comment line starts with "c".
+
 c This file format is based on the Model Counting Competition in 2021:
 c https://mccompetition.org/past_iterations
-
-c Each comment line starts with "c".
 
 c The problem line for weighted projected CNF formulas specifies the numbers of variables and clauses.
 c A weighted projected CNF formula with 6 vars and 5 clauses:

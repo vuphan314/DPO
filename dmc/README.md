@@ -1,14 +1,14 @@
 # DMC (diagram model counter)
 Given a project-join tree for an XOR-CNF formula, DMC solves:
-- Boolean MPE
-- weighted projected model counting (WPMC); tree must be graded
+- Boolean MPE, and
+- weighted projected model counting (WPMC), if the tree is graded.
 
 <!-- ####################################################################### -->
 
 ## Installation (Linux)
 
 ### Prerequisites
-- [external libraries](./Singularity):
+- [External libraries](./Singularity):
   - automake 1.16
   - cmake 3.16
   - g++ 10.3
@@ -17,7 +17,7 @@ Given a project-join tree for an XOR-CNF formula, DMC solves:
   - sqlite3 3.31
   - make 4.2
   - python3 3.8
-- [included libraries](../addmc/libraries/):
+- [Included libraries](../addmc/libraries/):
   - [cryptominisat 5.8](https://github.com/msoos/cryptominisat)
   - [cudd 3.0](https://github.com/ivmai/cudd)
   - [cxxopts 2.2](https://github.com/jarro2783/cxxopts)
@@ -36,7 +36,15 @@ make dmc
 <!-- ####################################################################### -->
 
 ## Examples
-If you use Singularity, then replace `./dmc --cf=$cnfFile` with `singularity run --bind="/:/host" ./dmc.sif --cf=/host$(realpath $cnfFile)` in the following commands.
+If you use Singularity, then replace
+```bash
+./dmc --cf=$cnfFile
+```
+with
+```bash
+singularity run --bind="/:/host" ./dmc.sif --cf=/host$(realpath $cnfFile)
+```
+in the following commands.
 
 ### Showing command-line options
 #### Command
@@ -114,9 +122,9 @@ c procressing join tree...
 c getting join tree from stdin with 0s timer (end input with 'enter' then 'ctrl d')
 c processed join tree ending on line 99
 c joinTreeWidth                 10
-c plannerSeconds                0.0148414
+c plannerSeconds                0.0160716
 c getting join tree from stdin: done
-c killed planner process with pid 221655
+c killed planner process with pid 31508
 
 c computing output...
 c diagramVarSeconds             0
@@ -124,16 +132,16 @@ c thread slice counts: { 1 }
 c sliceWidth                    10
 c threadMaxMemMegabytes         4000
 c thread    1/1 | assignment    1/1: {  }
-c thread    1/1 | assignment    1/1 | seconds   0.021000 | solution      -20.604935
-c apparentSolution              -20.604934991064254746
+c thread    1/1 | assignment    1/1 | seconds   0.022000 | solution      183.000000
+c apparentSolution              183.000000000000000000
 c ------------------------------------------------------------------
 s SATISFIABLE
 c s type wmc
-c s log10-estimate -20.604934991064254746
-c s exact double prec-sci 0.000000000000000000
+c s log10-estimate 183.000000000000000000
+c s exact double prec-sci 999999999999999999977184472096979338870252585018275201148849567236816708214081305269980022394700003382602831121442710729136785452658270562466280976151305913591196884979575083472257024.000000000000000000
 c ------------------------------------------------------------------
 v 1 -2 3 4 5 6 7 8 -9 -10 11 -12 13 14 15 16 17 18 -19 -20 21 -22 -23 -24 -25 26 -27 -28 29 30 31 32 -33 -34 35 -36 37 -38 -39 -40 41 42 -43 -44 45 46 -47 -48 49 50 51 -52 -53 -54 55 -56 57 -58 59 60 -61 62 -63 64 -65 66 67 -68 69 70 71 72 73 -74 75 76 77 -78 -79 80 -81 -82 -83 84 -85 -86 87 -88 89 90 -91 -92 93 -94 95 96 97 -98 -99 -100
-c seconds                       0.206000000000000000
+c seconds                       0.176000000000000000
 ```
 
 ### Solving WPMC given CNF file and graded join tree from JT file
