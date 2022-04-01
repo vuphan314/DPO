@@ -16,8 +16,9 @@ unzip benchmarks.zip
 
 ### Files
 All formulas have integer weights.
-- Dir `benchmarks/iweight/xcnf/chain/`: random chain formulas in XOR-CNF (for DPO)
-- Dir `benchmarks/iweight/wcnf/chain/`: random chain formulas in pure CNF (for MaxHS and UWrMaxSat)
+- Dir `benchmarks/xcnf/chain/`: random chain formulas in XOR-CNF (for DPO)
+- Dir `benchmarks/xwcnf/chain/`: random chain formulas in XOR-WCNF (for GaussMaxHS)
+- Dir `benchmarks/wcnf/chain/`: random chain formulas in pure WCNF (for MaxHS and UWrMaxSat)
   - Converted from XOR-CNF using [Tseitin transformation](https://pyeda.readthedocs.io/en/latest/expr.html#tseitin-s-encoding)
 
 <!-- ####################################################################### -->
@@ -37,6 +38,7 @@ unzip bin.zip
 ### Files
 - `bin/lg.sif`: DPO's [planner](../lg/)
 - `bin/dmc`: DPO's [executor](../dmc/)
+- `bin/gaussmaxhs`: [GaussMaxHS](https://github.com/meelgroup/gaussmaxhs)
 - `bin/maxhs`: [MaxHS](https://maxsat-evaluations.github.io/2021/mse21-solver-src/complete/maxhs.zip)
 - `bin/uwrmaxsat`: [UWrMaxSat](https://maxsat-evaluations.github.io/2021/mse21-solver-src/complete/uwrmaxsat.zip)
 - `bin/runsolver`: [tool to control and measure resource consumption](https://github.com/utpalbora/runsolver)
@@ -53,9 +55,14 @@ model:10111111001011111100100001001111001010001100110011100010101101010110111110
 - The base-10 logarithm of the maximum is `183`.
 - A maximizer is `1011111100101111110010000100111100101000110011001110001010110101011011111011100100010010110010111000` (list of values of variables in declared order).
 
+### GaussMaxHS
+```bash
+./wrapper.py --solver=gauss --cf=../examples/chain_n100_k10.xwcnf | ./postprocessor.py 2>/dev/null
+```
+
 ### MaxHS
 ```bash
-./wrapper.py --solver=maxhs --cf=../examples/chain_n100_k10.wcnf --solver=maxhs | ./postprocessor.py 2>/dev/null
+./wrapper.py --solver=maxhs --cf=../examples/chain_n100_k10.wcnf | ./postprocessor.py 2>/dev/null
 ```
 
 ### UWrMaxSat
@@ -82,6 +89,7 @@ unzip data.zip
   - Files `*.in`: commands
   - Files `*.log`: raw outputs
   - Files `*.out`: postprocessed outputs
+- Dir `data/chain/*/gauss`: GaussMaxHS
 - Dir `data/chain/*/maxhs`: MaxHS
 - Dir `data/chain/*/uwr`: UWrMaxSat
 

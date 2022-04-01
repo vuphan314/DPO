@@ -13,9 +13,10 @@ DMC = 'dmc'
 DPMC = 'dpmc'
 DPMC_SOLVERS = (PLANNER, DMC, DPMC)
 
+GAUSS = 'gauss'
 MAXHS = 'maxhs'
 UWR = 'uwr'
-SOLVERS = DPMC_SOLVERS + (MAXHS, UWR)
+SOLVERS = DPMC_SOLVERS + (GAUSS, MAXHS, UWR)
 
 HTD = 'htd'
 FLOW = 'flow'
@@ -174,7 +175,7 @@ def main(verbose):
         elif solver in DPMC_SOLVERS:
             printDpmcLine(line, solver, pids)
 
-        elif solver in {MAXHS, UWR}:
+        elif solver in {GAUSS, MAXHS, UWR}:
             if line.startswith('o '):
                 optimum = float(words[1])
                 convertMaxSatOptimum(optimum)

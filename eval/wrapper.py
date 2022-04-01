@@ -14,9 +14,10 @@ DMC = 'dmc'
 DPMC = 'dpmc'
 DPMC_SOLVERS = (PLANNER, DMC, DPMC)
 
+GAUSS = 'gauss'
 MAXHS = 'maxhs'
 UWR = 'uwr'
-SOLVERS = DPMC_SOLVERS + (MAXHS, UWR)
+SOLVERS = DPMC_SOLVERS + (GAUSS, MAXHS, UWR)
 
 HTD = 'htd'
 FLOW = 'flow'
@@ -113,6 +114,13 @@ def main(cf, solver, decomposer, jf, sif, softmemcap, memcap, timecap, runner, t
             f'--vs={vs}'
         ]
         sh(cmd, stderr=(sys.stderr if solver == PLANNER else sys.stdout))
+    elif solver == GAUSS:
+        cmd += [
+            getBinPath('gaussmaxhs'),
+            f'-verb={vs}',
+            cf
+        ]
+        sh(cmd, stderr=sys.stdout)
     elif solver == MAXHS:
         cmd += [
             getBinPath('maxhs'),
