@@ -1,6 +1,6 @@
 # Evaluation (Linux)
 
-<!-- ####################################################################### -->
+--------------------------------------------------------------------------------
 
 ## Benchmarks
 
@@ -21,7 +21,7 @@ All formulas have integer weights.
 - Dir `benchmarks/wcnf/chain/`: random chain formulas in pure WCNF (for MaxHS and UWrMaxSat)
   - Converted from XOR-CNF using [Tseitin transformation](https://pyeda.readthedocs.io/en/latest/expr.html#tseitin-s-encoding)
 
-<!-- ####################################################################### -->
+--------------------------------------------------------------------------------
 
 ## Binary solvers
 
@@ -70,7 +70,7 @@ model:10111111001011111100100001001111001010001100110011100010101101010110111110
 ./wrapper.py --solver=uwr --cf=../examples/chain_n100_k10.wcnf | ./postprocessor.py 2>/dev/null
 ```
 
-<!-- ####################################################################### -->
+--------------------------------------------------------------------------------
 
 ## Data
 
@@ -93,7 +93,7 @@ unzip data.zip
 - Dir `data/chain/*/maxhs`: MaxHS
 - Dir `data/chain/*/uwr`: UWrMaxSat
 
-<!-- ####################################################################### -->
+--------------------------------------------------------------------------------
 
 ## [Jupyter notebook](dpo.ipynb)
 - At the end of the notebook, there are two figures used in the paper.

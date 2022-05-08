@@ -1,27 +1,25 @@
 # DMC (diagram model counter)
-Given a project-join tree for an XOR-CNF formula, DMC solves:
-- Boolean MPE, and
-- weighted projected model counting (WPMC), if the tree is graded.
+Given a project-join tree for an XOR-CNF formula, DMC solves Boolean MPE.
 
-<!-- ####################################################################### -->
+--------------------------------------------------------------------------------
 
 ## Installation (Linux)
 
 ### Prerequisites
-- [External libraries](./Singularity):
-  - automake 1.16
-  - cmake 3.16
-  - g++ 10.3
-  - gmp 6.2
-  - m4ri 20200125
-  - sqlite3 3.31
-  - make 4.2
-  - python3 3.8
-- [Included libraries](../addmc/libraries/):
-  - [cryptominisat 5.8](https://github.com/msoos/cryptominisat)
-  - [cudd 3.0](https://github.com/ivmai/cudd)
-  - [cxxopts 2.2](https://github.com/jarro2783/cxxopts)
-  - [sylvan 1.5](https://github.com/trolando/sylvan)
+#### [External libraries](./Singularity)
+- automake 1.16
+- cmake 3.16
+- g++ 10.3
+- gmp 6.2
+- m4ri 20200125
+- sqlite3 3.31
+- make 4.2
+- python3 3.8
+#### [Included libraries](../addmc/libraries/)
+- [cryptominisat 5.8](https://github.com/msoos/cryptominisat)
+- [cudd 3.0](https://github.com/ivmai/cudd)
+- [cxxopts 2.2](https://github.com/jarro2783/cxxopts)
+- [sylvan 1.5](https://github.com/trolando/sylvan)
 
 ### Command
 #### With Singularity 3.5 (slow)
@@ -33,7 +31,7 @@ sudo make dmc.sif
 make dmc
 ```
 
-<!-- ####################################################################### -->
+--------------------------------------------------------------------------------
 
 ## Examples
 If you use Singularity, then replace
@@ -142,54 +140,4 @@ c s exact double prec-sci 999999999999999999977184472096979338870252585018275201
 c ------------------------------------------------------------------
 v 1 -2 3 4 5 6 7 8 -9 -10 11 -12 13 14 15 16 17 18 -19 -20 21 -22 -23 -24 -25 26 -27 -28 29 30 31 32 -33 -34 35 -36 37 -38 -39 -40 41 42 -43 -44 45 46 -47 -48 49 50 51 -52 -53 -54 55 -56 57 -58 59 60 -61 62 -63 64 -65 66 67 -68 69 70 71 72 73 -74 75 76 77 -78 -79 80 -81 -82 -83 84 -85 -86 87 -88 89 90 -91 -92 93 -94 95 96 97 -98 -99 -100
 c seconds                       0.176000000000000000
-```
-
-### Solving WPMC given CNF file and graded join tree from JT file
-#### Command
-```bash
-./dmc --cf=../examples/phi.cnf --wc=1 --pc=1 <../examples/phi.jt
-```
-#### Output
-```
-c processing command-line options...
-c cnfFile                       ../examples/phi.cnf
-c weightedCounting              1
-c projectedCounting             1
-c existRandom                   0
-c diagramPackage                CUDD
-c logCounting                   0
-c plannerWaitSeconds            0
-c threadCount                   1
-c threadSliceCount              1
-c randomSeed                    0
-c diagramVarOrderHeuristic      MCS
-c sliceVarOrderHeuristic        BIGGEST_NODE
-c memSensitivityMegabytes       1000
-c maxMemMegabytes               4000
-c joinPriority                  SMALLEST_PAIR
-
-c processing CNF formula...
-
-c procressing join tree...
-c getting join tree from stdin with 0s timer (end input with 'enter' then 'ctrl d')
-c processed join tree ending on line 28
-c joinTreeWidth                 2
-c plannerSeconds                0
-c getting join tree from stdin: done
-
-c computing output...
-c diagramVarSeconds             0
-c thread slice counts: { 1 }
-c sliceWidth                    2
-c threadMaxMemMegabytes         4000
-c thread    1/1 | assignment    1/1: {  }
-c thread    1/1 | assignment    1/1 | seconds   0.016000 | solution        0.400000
-c apparentSolution              0.400000000000000022
-c ------------------------------------------------------------------
-s SATISFIABLE
-c s type pmc
-c s log10-estimate -0.397940008672037585
-c s exact double prec-sci 0.400000000000000022
-c ------------------------------------------------------------------
-c seconds                       0.016000000000000000
 ```
