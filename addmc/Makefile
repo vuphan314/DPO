@@ -1,4 +1,4 @@
-## in dir src/: file common.hh is included by files dmc.hh and htb.hh
+## in dir src/: file common.hh is included by file dmc.hh
 
 GXX = g++-10
 
@@ -35,21 +35,14 @@ CMSAT_LINKS = -L$(CMSAT_LIB_DIR) -lcryptominisat5 -lsqlite3 -lm4ri -ldl
 ################################################################################
 
 DMC_OBJECTS = common.o dmc.o
-HTB_OBJECTS = common.o htb.o
 
 .ONESHELL: # for all targets
 
 dmc: $(DMC_OBJECTS)
 	$(GXX) -o dmc $(DMC_OBJECTS) $(CUDD_LINKS) $(SYLVAN_LINKS) $(CMSAT_LINKS) $(LINK_OPTIONS)
 
-htb: $(HTB_OBJECTS)
-	$(GXX) -o htb $(HTB_OBJECTS) $(LINK_OPTIONS)
-
 dmc.o: src/dmc.cc src/dmc.hh src/common.hh $(CXXOPTS) $(CUDD_TARGET) $(SYLVAN_TARGET) $(CMSAT_TARGET)
 	$(GXX) src/dmc.cc -c $(ASSEMBLY_OPTIONS) $(CUDD_INCLUSIONS) $(SYLVAN_INCLUSIONS) $(CMSAT_INCLUSIONS)
-
-htb.o: src/htb.cc src/htb.hh src/common.hh $(CXXOPTS)
-	$(GXX) src/htb.cc -c $(ASSEMBLY_OPTIONS)
 
 common.o: src/common.cc src/common.hh
 	$(GXX) src/common.cc -c $(ASSEMBLY_OPTIONS)
@@ -74,8 +67,6 @@ $(CMSAT_TARGET):
 
 .PHONY: all cudd sylvan cryptominisat clean clean-cudd clean-sylvan clean-cryptominisat clean-libraries
 
-all: dmc htb
-
 cudd: $(CUDD_TARGET)
 
 sylvan: $(SYLVAN_TARGET)
@@ -83,7 +74,7 @@ sylvan: $(SYLVAN_TARGET)
 cryptominisat: $(CMSAT_TARGET)
 
 clean:
-	rm -f *.o dmc htb
+	rm -f *.o dmc
 
 clean-cudd:
 	cd $(CUDD_DIR) && git clean -xdf

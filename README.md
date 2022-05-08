@@ -7,7 +7,7 @@ DPO runs in two phases:
 
 ## Cloning this repository
 ```bash
-git clone https://github.com/vuphan314/dpo
+git clone https://github.com/vuphan314/DPO
 ```
 
 --------------------------------------------------------------------------------
@@ -16,7 +16,6 @@ git clone https://github.com/vuphan314/dpo
 - Dir [`lg/`](./lg/): DPO's planner
 - Dir [`dmc/`](./dmc/): DPO's executor
 - Dir [`eval/`](./eval/): empirical evaluation
-- File [`ACKNOWLEDGMENT.md`](./ACKNOWLEDGMENT.md)
 
 --------------------------------------------------------------------------------
 

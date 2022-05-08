@@ -11,7 +11,7 @@ Because of the variety of dependencies used in the various graph decomposition t
 ### Installation
 
 The container can be built with the following commands:
-```
+```bash
 sudo make lg.sif
 ```
 
@@ -92,7 +92,7 @@ The prerequisites to install LG, at minimum, are:
 * boost (graph and system)
 
 LG can then be built with the following command:
-```
+```bash
 make
 ```
 

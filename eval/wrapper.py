@@ -48,7 +48,6 @@ def printPair(key, value): # for postprocessor.py
 @click.option('--solver', help='planner, executor, or counter', type=click.Choice(SOLVERS), default=DPMC, show_default=True)
 @click.option('--decomposer', help='planning technique', type=click.Choice(DECOMPOSERS), default=FLOW, show_default=True)
 @click.option('--jf', help='JT file', default='', show_default=True)
-@click.option('--sif', help='dmc.sif instead of dmc', default=0, show_default=True)
 @click.option('--softmemcap', help='for solver, in GB', default=0., show_default=True)
 @click.option('--memcap', help='for runsolver, in GB', default=0., show_default=True)
 @click.option('--timecap', help='for runsolver, in seconds', default=0., show_default=True)
@@ -71,7 +70,7 @@ def printPair(key, value): # for postprocessor.py
 @click.option('--vp', help='verbose profiling', default=0, show_default=True)
 @click.option('--vs', help='verbose solving', default=1, show_default=True)
 @click.option('--extra', help='other arguments', default='', show_default=True)
-def main(cf, solver, decomposer, jf, sif, softmemcap, memcap, timecap, runner, tc, wc, pc, er, lb, tm, ep, mf, mv, sm, pw, dp, ts, sv, vj, vp, vs, extra):
+def main(cf, solver, decomposer, jf, softmemcap, memcap, timecap, runner, tc, wc, pc, er, lb, tm, ep, mf, mv, sm, pw, dp, ts, sv, vj, vp, vs, extra):
     def getRunnerCmd():
         cmd = [getBinPath('runsolver'), '-w /dev/null', '-v /dev/stdout']
         if memcap:
@@ -93,7 +92,6 @@ def main(cf, solver, decomposer, jf, sif, softmemcap, memcap, timecap, runner, t
             f'--solver={solver}',
             f'--decomposer={decomposer}',
             f'--jf={jf}',
-            f'--sif={sif}',
             f'--softmemcap={softmemcap}',
             f'--tc={tc}',
             f'--wc={wc}',
