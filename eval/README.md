@@ -6,7 +6,7 @@
 
 ### Downloading archive to this dir (`eval/`)
 ```bash
-wget https://github.com/vuphan314/dpo/releases/download/v0/benchmarks.zip
+wget https://github.com/vuphan314/DPO/releases/download/v0/benchmarks.zip
 ```
 
 ### Extracting downloaded archive into new dir `eval/benchmarks/`
@@ -15,11 +15,11 @@ unzip benchmarks.zip
 ```
 
 ### Files
-All formulas have integer weights.
-- Dir `benchmarks/xcnf/chain/`: random chain formulas in XOR-CNF (for DPO)
-- Dir `benchmarks/xwcnf/chain/`: random chain formulas in XOR-WCNF (for GaussMaxHS)
-- Dir `benchmarks/wcnf/chain/`: random chain formulas in pure WCNF (for MaxHS and UWrMaxSat)
-  - Converted from XOR-CNF using [Tseitin transformation](https://pyeda.readthedocs.io/en/latest/expr.html#tseitin-s-encoding)
+Random chain formulas:
+- Dir `benchmarks/xcnf/chain/`: benchmarks in XOR-CNF (for DPO)
+- Dir `benchmarks/xwcnf/chain/`: benchmarks in XOR-WCNF (for GaussMaxHS)
+- Dir `benchmarks/wcnf/chain/`: benchmarks in pure WCNF (for MaxHS and UWrMaxSat)
+  - Converted from XOR-WCNF using [Tseitin transformation](https://pyeda.readthedocs.io/en/latest/expr.html#tseitin-s-encoding)
 
 --------------------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ All formulas have integer weights.
 
 ### Downloading archive to this dir (`eval/`)
 ```bash
-wget https://github.com/vuphan314/dpo/releases/download/v0/bin.zip
+wget https://github.com/vuphan314/DPO/releases/download/v0/bin.zip
 ```
 
 ### Extracting downloaded archive into dir `eval/bin/`
@@ -76,7 +76,7 @@ model:10111111001011111100100001001111001010001100110011100010101101010110111110
 
 ### Downloading archive to this dir (`eval/`)
 ```bash
-wget https://github.com/vuphan314/dpo/releases/download/v0/data.zip
+wget https://github.com/vuphan314/DPO/releases/download/v0/data.zip
 ```
 
 ### Extracting downloaded archive into dir `eval/data/`
@@ -85,16 +85,16 @@ unzip data.zip
 ```
 
 ### Files
-- Dir `data/chain/*/dpmc/noprune/xor/`: DPO on XOR-CNF benchmarks (with no pruning)
+- Dir `data/chain/dpmc/noprune/`: DPO on XOR-CNF benchmarks (with no pruning)
   - Files `*.in`: commands
   - Files `*.log`: raw outputs
   - Files `*.out`: postprocessed outputs
-- Dir `data/chain/*/gauss`: GaussMaxHS
-- Dir `data/chain/*/maxhs`: MaxHS
-- Dir `data/chain/*/uwr`: UWrMaxSat
+- Dir `data/chain/gauss`: GaussMaxHS
+- Dir `data/chain/maxhs`: MaxHS
+- Dir `data/chain/uwr`: UWrMaxSat
 
 --------------------------------------------------------------------------------
 
 ## [Jupyter notebook](dpo.ipynb)
-- At the end of the notebook, there are two figures used in the paper.
-- Run all cells again to re-generate these figures from dir `data/`.
+- Near the end of the notebook, there is a cactus plot used in the paper (chain benchmarks).
+- Run all cells again to re-generate this figure from dir `data/`.
