@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <iterator>
 #include <map>
 #include <mutex>
 #include <queue>
@@ -13,6 +14,7 @@
 #include <signal.h>
 #include <sys/time.h>
 #include <thread>
+#include <unordered_map>
 #include <unordered_set>
 
 #include <gmpxx.h>

@@ -1,6 +1,6 @@
 ## in dir src/: file common.hh is included by files dmc.hh and htb.hh
 
-GXX = g++-10
+GXX = g++-13
 
 # opt = -Ofast # be careful with inf and nan
 ASSEMBLY_OPTIONS = -g -std=c++2a -Wno-register $(opt)
@@ -84,6 +84,12 @@ cryptominisat: $(CMSAT_TARGET)
 
 clean:
 	rm -f *.o dmc htb
+
+clean-dmc:
+	rm -f $(DMC_OBJECTS) dmc
+
+clean-htb:
+	rm -f $(HTB_OBJECTS) htb
 
 clean-cudd:
 	cd $(CUDD_DIR) && git clean -xdf
