@@ -4,7 +4,9 @@ eval/bin*
 eval/data*
 
 addmc/dmc
+addmc/htb
 dmc/dmc
+htb/htb
 
 *.sif
 
