@@ -9,7 +9,7 @@ Given a project-join tree for an XOR-CNF formula, DMC solves Boolean MPE.
 #### External libraries
 - automake 1.16
 - cmake 3.16
-- g++ 10.3
+- g++ 13.3
 - gmp 6.2
 - m4ri 20200125
 - sqlite3 3.31
@@ -77,7 +77,7 @@ Usage:
 ### Solving Boolean MPE given XOR-CNF formula from file and join tree from planner
 #### Command
 ```bash
-cnfFile="../examples/chain_n100_k10.xcnf" && ../lg/lg.sif "/solvers/flow-cutter-pace17/flow_cutter_pace17 -p 100" <$cnfFile | ./dmc --cf=$cnfFile --wc=1 --er=1 --lc=1 --mf=2
+cnfFile="../examples/chain_n100_k10.xcnf" && ../htb/htb --cf=$cnfFile | ./dmc --cf=$cnfFile --wc=1 --er=1 --lc=1 --mf=2
 ```
 #### Output
 ```
@@ -88,6 +88,7 @@ c projectedCounting             0
 c existRandom                   1
 c diagramPackage                CUDD
 c logCounting                   1
+c logBound                      -inf
 c maximizerFormat               LONG
 c maximizerVerification         0
 c plannerWaitSeconds            0
@@ -104,26 +105,28 @@ c processing CNF formula...
 
 c procressing join tree...
 c getting join tree from stdin with 0s timer (end input with 'enter' then 'ctrl d')
-c processed join tree ending on line 99
-c joinTreeWidth                 10
-c plannerSeconds                0.0161099
+c processed join tree ending on line 201
+c joinTreeWidth                 19
+c plannerSeconds                0.044
 c getting join tree from stdin: done
-c killed planner process with pid 236166
+c killed planner process with pid 84964
 
 c computing output...
 c diagramVarSeconds             0
 c thread slice counts: { 1 }
-c sliceWidth                    10
+c sliceWidth                    19
 c threadMaxMemMegabytes         4000
 c thread    1/1 | assignment    1/1: {  }
-c thread    1/1 | assignment    1/1 | seconds   0.027000 | solution      183.000000
+c thread    1/1 | assignment    1/1 | seconds   0.039000 | solution      183.000000
 c apparentSolution              183.000000000000000000
+c prunedDdCount                 0
+c pruningSeconds                0.000000000000000000
 c ------------------------------------------------------------------
 s SATISFIABLE
 c s type wmc
 c s log10-estimate 183.000000000000000000
 c s exact double prec-sci 999999999999999999977184472096979338870252585018275201148849567236816708214081305269980022394700003382602831121442710729136785452658270562466280976151305913591196884979575083472257024.000000000000000000
 c ------------------------------------------------------------------
-v 1 -2 3 4 5 6 7 8 -9 -10 11 -12 13 14 15 16 17 18 -19 -20 21 -22 -23 -24 -25 26 -27 -28 29 30 31 32 -33 -34 35 -36 37 -38 -39 -40 41 42 -43 -44 45 46 -47 -48 49 50 51 -52 -53 -54 55 -56 57 -58 59 60 -61 62 -63 64 -65 66 67 -68 69 70 71 72 73 -74 75 76 77 -78 -79 80 -81 -82 -83 84 -85 -86 87 -88 89 90 -91 -92 93 -94 95 96 97 -98 -99 -100
-c seconds                       0.221000000000000000
+v 1 -2 3 4 5 6 7 8 -9 -10 11 -12 13 14 15 16 17 18 -19 -20 21 -22 -23 -24 -25 26 -27 -28 29 30 31 32 -33 -34 35 -36 37 -38 -39 -40 41 42 -43 -44 45 46 -47 -48 49 50 51 -52 -53 -54 55 -56 57 -58 59 60 -61 62 -63 -64 -65 66 67 68 69 70 71 72 73 74 75 76 77 78 -79 80 -81 -82 -83 84 -85 -86 -87 88 89 90 -91 -92 93 -94 95 96 -97 98 -99 -100
+c seconds                       0.083000000000000000
 ```
