@@ -13,7 +13,8 @@ git clone https://github.com/vuphan314/DPO
 --------------------------------------------------------------------------------
 
 ## Files
-- Dir [`lg/`](./lg/): DPO's planner
+- Dir [`lg/`](./lg/): DPO's *deprecated* planner
+- Dir [`htb/`](./htb/): DPO's **supported** planner
 - Dir [`dmc/`](./dmc/): DPO's executor
 - Dir [`eval/`](./eval/): empirical evaluation
 
