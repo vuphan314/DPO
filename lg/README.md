@@ -4,7 +4,7 @@
 
 A tool for using tree decompositions to construct join trees.
 
-## Running with Singularity
+## Running with Singularity (deprecated)
 
 Because of the variety of dependencies used in the various graph decomposition tools, it is recommended to use Singularity to run LG.
 
@@ -72,19 +72,19 @@ c run with 0.0/0.1/0.2 min balance and node_min_expansion in endless loop with v
 ^C
 ```
 Note that LG is an anytime algorithm, so it prints multiple join trees to STDOUT separated by '='.
-The pid of the tree decomposition solver is given in the first comment line (`c pid`) and can be killed to stop the tree decomposition solver.
+The pid of the tree-decomposition solver is given in the first comment line (`c pid`) and can be killed to stop the tree-decomposition solver.
 
-LG can also be run using htd or Tamaki as the tree decomposition solver as follows:
+LG can also be run using htd or Tamaki as the tree-decomposition solver as follows:
 ```bash
 ./lg.sif "/solvers/htd-master/bin/htd_main -s 1234567 --opt width --iterations 0 --strategy challenge --print-progress --preprocessing full" <../examples/s27_3_2.wpcnf
 ```
 ```bash
 ./lg.sif "java -classpath /solvers/TCS-Meiji -Xmx4g -Xms4g -Xss1g tw.heuristic.MainDecomposer -s 1234567 -p 100" <../examples/s27_3_2.wpcnf
 ```
-Note that `-Xmx4g` and `-Xms4g` refers to the amount of memory given to the JVM in the tree decomposition solver (in this case, 4GB).
+Note that `-Xmx4g` and `-Xms4g` refers to the amount of memory given to the JVM in the tree-decomposition solver (in this case, 4GB).
 Upon an error message that begins `OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory`, reduce 4 to a smaller number.
 
-## Running without Singularity
+## Running without Singularity (supported)
 
 The prerequisites to install LG, at minimum, are:
 * make
@@ -96,8 +96,34 @@ LG can then be built with the following command:
 make
 ```
 
-To be useful, a tree decomposition solver must also be installed.
+To be useful, a tree-decomposition solver must also be built.
 Options include:
-* Tamaki; compiled using the `heuristic` instructions [here](solvers/TCS-Meiji).
-* FlowCutter; compiled using the instructions [here](solvers/flow-cutter-pace17).
-* htd; compiled using the instructions [here](solvers/htd-master).
+
+### [Tamaki](solvers/TCS-Meiji)
+```bash
+make -C solvers/TCS-Meiji heuristic
+```
+```bash
+build/lg "java -classpath solvers/TCS-Meiji -Xmx4g -Xms4g -Xss1g tw.heuristic.MainDecomposer -s 1234567 -p 100" <../examples/s27_3_2.wpcnf
+```
+
+### [FlowCutter](solvers/flow-cutter-pace17)
+```bash
+make -C solvers/flow-cutter-pace17
+```
+```bash
+build/lg "solvers/flow-cutter-pace17/flow_cutter_pace17 -s 1234567 -p 100" <../examples/s27_3_2.wpcnf
+```
+
+### [htd](solvers/htd-master)
+```bash
+mkdir -p solvers/htd-master/build
+cd solvers/htd-master/build
+cmake ..
+make
+```
+```bash
+cd -
+build/lg "solvers/htd-master/build/bin/htd_main -s 1234567 --opt width --iterations 0 --strategy challenge --print-progress --preprocessing full" <../examples/s27_3_2.wpcnf
+```
+

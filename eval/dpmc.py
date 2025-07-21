@@ -10,19 +10,19 @@ DMC = 'dmc'
 DPMC = 'dpmc'
 DPMC_SOLVERS = (PLANNER, DMC, DPMC)
 
+def getBinPath(fileName):
+    return os.path.join(os.path.dirname(os.path.realpath(__file__)), 'bin', fileName)
+
 HTD = 'htd'
 FLOW = 'flow'
 DECOMPOSERS = {
-    HTD: '/solvers/htd-master/bin/htd_main --opt width --iterations 0 --strategy challenge --print-progress --preprocessing full',
-    FLOW: '/solvers/flow-cutter-pace17/flow_cutter_pace17 -p 100'
+    HTD: f'{getBinPath("htd_main-1.2.0")} --opt width --iterations 0 --strategy challenge --print-progress --preprocessing full',
+    FLOW: f'{getBinPath("flow_cutter_pace17")} -p 100'
 }
 
 CUDD = 'c'
 SYLVAN = 's'
 DD_PACKAGES = (CUDD, SYLVAN)
-
-def getBinPath(fileName):
-    return os.path.join(os.path.dirname(os.path.realpath(__file__)), 'bin', fileName)
 
 @click.command(context_settings={'max_content_width': 90, 'help_option_names': ['-h', '--help']})
 @click.option('--cf', help='CNF file', required=True)
@@ -48,7 +48,7 @@ def getBinPath(fileName):
 @click.option('--vp', help='verbose profiling', default=0, show_default=True)
 @click.option('--vs', help='verbose solving', default=1, show_default=True)
 def main(cf, solver, decomposer, jf, softmemcap, tc, wc, pc, er, lb, tm, ep, mf, mv, sm, pw, dp, ts, sv, vj, vp, vs):
-    lgCmd = [getBinPath('lg.sif'), DECOMPOSERS[decomposer]]
+    lgCmd = [getBinPath('lg'), DECOMPOSERS[decomposer]]
 
     dmcCmd = [getBinPath('dmc'), f'--cf={cf}'] # link=-static is safe iff tc == 1
     dmcCmd += [

@@ -3,6 +3,7 @@
 
 #include "array_id_func.h"
 
+#include <string>
 #include <tuple>
 
 struct ListGraph{

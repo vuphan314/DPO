@@ -4,6 +4,7 @@ Copyright (c) 2020, Jeffrey Dudek
 
 #pragma once
 
+#include <cstdint>
 #include <string>
 #include <vector>
 

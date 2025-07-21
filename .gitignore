@@ -10,9 +10,10 @@ htb/htb
 
 *.sif
 
-lg/build
+lg/build/
 lg/solvers/flow-cutter-pace17/flow_cutter_pace17
-lg/solvers/htd-master/build
+lg/solvers/htd-master/build/
+lg/solvers/TCS-Meiji/tw/heuristic/*.class
 
 __pycache__
 *.pyc

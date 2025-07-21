@@ -36,7 +36,9 @@ unzip bin.zip
 ```
 
 ### Files
-- `bin/lg.sif`: DPO's [planner](../lg/)
+- `bin/lg`: DPO's [planner](../lg/)
+  - `bin/flow_cutter_pace17`: LG's default [depocompser](../lg/solvers/flow-cutter-pace17)
+  - `bin/htd_main-1.2`: LG's other [depocompser](../lg/solvers/htd-master)
 - `bin/dmc`: DPO's [executor](../dmc/)
 - `bin/gaussmaxhs`: [GaussMaxHS](https://github.com/meelgroup/gaussmaxhs)
 - `bin/maxhs`: [MaxHS](https://maxsat-evaluations.github.io/2021/mse21-solver-src/complete/maxhs.zip)
