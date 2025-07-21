@@ -99,14 +99,6 @@ make
 To be useful, a tree-decomposition solver must also be built.
 Options include:
 
-### [Tamaki](solvers/TCS-Meiji)
-```bash
-make -C solvers/TCS-Meiji heuristic
-```
-```bash
-build/lg "java -classpath solvers/TCS-Meiji -Xmx4g -Xms4g -Xss1g tw.heuristic.MainDecomposer -s 1234567 -p 100" <../examples/s27_3_2.wpcnf
-```
-
 ### [FlowCutter](solvers/flow-cutter-pace17)
 ```bash
 make -C solvers/flow-cutter-pace17
@@ -121,9 +113,17 @@ mkdir -p solvers/htd-master/build
 cd solvers/htd-master/build
 cmake ..
 make
+cd -
 ```
 ```bash
-cd -
 build/lg "solvers/htd-master/build/bin/htd_main -s 1234567 --opt width --iterations 0 --strategy challenge --print-progress --preprocessing full" <../examples/s27_3_2.wpcnf
+```
+
+### [Tamaki](solvers/TCS-Meiji)
+```bash
+make -C solvers/TCS-Meiji heuristic
+```
+```bash
+build/lg "java -classpath solvers/TCS-Meiji -Xmx4g -Xms4g -Xss1g tw.heuristic.MainDecomposer -s 1234567 -p 100" <../examples/s27_3_2.wpcnf
 ```
 
