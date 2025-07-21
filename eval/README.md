@@ -27,7 +27,7 @@ Random chain formulas:
 
 ### Downloading archive to this dir (`eval/`)
 ```bash
-wget https://github.com/vuphan314/DPO/releases/download/v0/bin.zip
+wget https://github.com/vuphan314/DPO/releases/download/v1/bin.zip
 ```
 
 ### Extracting downloaded archive into dir `eval/bin/`
